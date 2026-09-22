@@ -1,6 +1,8 @@
 "use client"
 import React from 'react'
-import { ArrowUp, Github, Linkedin, Mail, Twitter } from "lucide-react"
+import { ArrowUp } from "lucide-react"
+import { FaGithub, FaLinkedinIn, FaXTwitter } from "react-icons/fa6"
+import { HiOutlineMail } from "react-icons/hi"
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -15,7 +17,7 @@ const Footer = () => {
         <div className="text-center md:text-left">
           <a
             href="#Page1"
-            className="text-lg font-extrabold tracking-wider text-white uppercase inline-block"
+            className="text-lg font-extrabold tracking-wider text-white uppercase inline-block hover:scale-105 transition-transform"
           >
             WORKS.<span className="text-orange-400">SUJAL</span>
           </a>
@@ -38,46 +40,46 @@ const Footer = () => {
 
         {/* Social Icons & Back-to-Top */}
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <a
               href="https://github.com/codingerror7"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-white hover:border-white/20 transition-all"
+              className="p-2.5 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-white hover:border-white/30 hover:scale-110 transition-all shadow-sm"
               aria-label="GitHub Profile"
             >
-              <Github className="w-4 h-4" />
+              <FaGithub className="w-4 h-4" />
             </a>
             <a
               href="https://www.linkedin.com/in/sujal-saraswat-a7aa63202/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-blue-400 hover:border-blue-400/30 transition-all"
+              className="p-2.5 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-blue-400 hover:border-blue-400/40 hover:scale-110 transition-all shadow-sm"
               aria-label="LinkedIn Profile"
             >
-              <Linkedin className="w-4 h-4" />
+              <FaLinkedinIn className="w-4 h-4" />
             </a>
             <a
               href="mailto:saraswatsujal@gmail.com"
-              className="p-2 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-cyan-400 hover:border-cyan-400/30 transition-all"
+              className="p-2.5 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-cyan-400 hover:border-cyan-400/40 hover:scale-110 transition-all shadow-sm"
               aria-label="Email Me"
             >
-              <Mail className="w-4 h-4" />
+              <HiOutlineMail className="w-4 h-4" />
             </a>
             <a
               href="https://x.com/shotsinmind"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-sky-400 hover:border-sky-400/30 transition-all"
+              className="p-2.5 rounded-full bg-white/5 border border-white/10 text-zinc-400 hover:text-sky-400 hover:border-sky-400/40 hover:scale-110 transition-all shadow-sm"
               aria-label="X Profile"
             >
-              <Twitter className="w-4 h-4" />
+              <FaXTwitter className="w-4 h-4" />
             </a>
           </div>
 
           <button
             onClick={scrollToTop}
-            className="p-2 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 hover:bg-orange-500/20 hover:border-orange-400 transition-all cursor-pointer"
+            className="p-2.5 rounded-full bg-orange-500/10 border border-orange-500/30 text-orange-400 hover:bg-orange-500/20 hover:border-orange-400 hover:scale-110 active:scale-95 transition-all cursor-pointer shadow-md"
             aria-label="Scroll to top"
             title="Back to Top"
           >
@@ -91,3 +93,4 @@ const Footer = () => {
 }
 
 export default Footer
+

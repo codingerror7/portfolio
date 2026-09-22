@@ -1,5 +1,6 @@
 "use client"
 import React from 'react'
+import { motion } from 'framer-motion'
 import Lottie from 'lottie-react'
 import Student from '../public/Student.json'
 import Books from '../public/Books.json'
@@ -49,15 +50,27 @@ const Page5 = () => {
     <section id="Education" className="min-h-screen w-full overflow-hidden bg-black py-20 lg:py-28">
       {/* Top Header & Intro Visual */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col-reverse lg:flex-row items-center justify-between gap-10 mb-16 lg:mb-24">
-        <div className="w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[420px] flex justify-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5 }}
+          className="w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[420px] flex justify-center"
+        >
           <Lottie
-            className="w-full h-auto"
+            className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)]"
             animationData={Student}
             loop={true}
           />
-        </div>
+        </motion.div>
 
-        <div className="w-full lg:w-[55%] text-center lg:text-left">
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5 }}
+          className="w-full lg:w-[55%] text-center lg:text-left"
+        >
           <span className="uppercase tracking-widest text-xs sm:text-sm font-semibold text-emerald-400">
             Academic Background
           </span>
@@ -68,7 +81,7 @@ const Page5 = () => {
           <p className="text-zinc-300 text-base sm:text-lg lg:text-xl font-medium mt-5 max-w-xl leading-relaxed">
             I may not be from a top-tier institute, but I strive every day to build top-tier, production-ready work.
           </p>
-        </div>
+        </motion.div>
       </div>
 
       {/* Main Responsive Timeline Layout */}
@@ -81,8 +94,14 @@ const Page5 = () => {
 
           <div className="space-y-10 sm:space-y-12">
             {educationList.map((item, index) => (
-              <div key={index} className="relative pl-12 sm:pl-16 group">
-                
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.45, delay: index * 0.12 }}
+                className="relative pl-12 sm:pl-16 group"
+              >
                 {/* Glowing Node Dot on Timeline */}
                 <div
                   className={`absolute left-[9px] sm:left-[17px] top-6 w-4 h-4 rounded-full bg-gradient-to-br ${item.dotColor} ring-4 ring-black shadow-lg transition-transform duration-300 group-hover:scale-125`}
@@ -90,7 +109,7 @@ const Page5 = () => {
 
                 {/* Education Card */}
                 <div
-                  className={`p-6 sm:p-8 rounded-2xl bg-zinc-950/80 border border-white/10 ${item.borderColor} backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 shadow-lg ${item.glowColor}`}
+                  className={`p-6 sm:p-8 rounded-2xl bg-zinc-950/80 border border-white/10 ${item.borderColor} backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 shadow-lg ${item.glowColor}`}
                 >
                   <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
                     <span className={`px-3 py-0.5 rounded-full text-xs font-semibold border ${item.scoreBadge}`}>
@@ -102,7 +121,7 @@ const Page5 = () => {
                     </span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-2 mb-1">
+                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-2 mb-1 group-hover:text-zinc-100 transition-colors">
                     {item.degree}
                   </h3>
 
@@ -111,7 +130,7 @@ const Page5 = () => {
                     {item.institute}
                   </p>
 
-                  <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
+                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-4 font-normal">
                     {item.description}
                   </p>
 
@@ -121,20 +140,26 @@ const Page5 = () => {
                   </div>
                 </div>
 
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
 
         {/* Right Illustration Column (4 cols on lg) */}
-        <div className="hidden lg:flex lg:col-span-4 justify-center items-center">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.6 }}
+          className="hidden lg:flex lg:col-span-4 justify-center items-center"
+        >
           <div className="w-full max-w-[340px]">
             <Lottie
               animationData={Books}
               loop={true}
             />
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

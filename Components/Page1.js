@@ -1,8 +1,10 @@
 'use client'
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import Navbar from './Navbar'
 import Mainslider from './Mainslider'
 import { Typewriter } from 'react-simple-typewriter'
+import { ArrowRight, Sparkles, ArrowDown } from 'lucide-react'
 
 const Page1 = () => {
   const [theme, setTheme] = useState('orange')
@@ -31,14 +33,14 @@ const Page1 = () => {
   const getTagColor = () => {
     switch (theme) {
       case 'yellow':
-        return 'border-amber-400/30 text-amber-300 bg-amber-950/20'
+        return 'border-amber-400/30 text-amber-300 bg-amber-950/20 hover:border-amber-400 hover:bg-amber-950/40'
       case 'green':
-        return 'border-emerald-400/30 text-emerald-300 bg-emerald-950/20'
+        return 'border-emerald-400/30 text-emerald-300 bg-emerald-950/20 hover:border-emerald-400 hover:bg-emerald-950/40'
       case 'blue':
-        return 'border-sky-400/30 text-sky-300 bg-sky-950/20'
+        return 'border-sky-400/30 text-sky-300 bg-sky-950/20 hover:border-sky-400 hover:bg-sky-950/40'
       case 'orange':
       default:
-        return 'border-orange-400/30 text-orange-300 bg-orange-950/20'
+        return 'border-orange-400/30 text-orange-300 bg-orange-950/20 hover:border-orange-400 hover:bg-orange-950/40'
     }
   }
 
@@ -57,8 +59,13 @@ const Page1 = () => {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-8 lg:pt-12 grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-4">
           
           {/* Left Column: Intro & Name */}
-          <div className="lg:col-span-4 text-center lg:text-left z-20">
-            <span className="inline-block px-3 py-1 mb-3 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase bg-white/10 text-zinc-200 backdrop-blur-md border border-white/15">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-4 text-center lg:text-left z-20"
+          >
+            <span className="inline-block px-3.5 py-1 mb-3 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase bg-white/10 text-zinc-200 backdrop-blur-md border border-white/15">
               Full Stack Developer
             </span>
             <p className="text-zinc-200 text-lg sm:text-xl lg:text-2xl font-medium tracking-wide">
@@ -85,10 +92,33 @@ const Page1 = () => {
             <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-md mx-auto lg:mx-0 font-normal">
               Building modern, scalable web applications with clean logic and visually engaging digital craftsmanship.
             </p>
-          </div>
+
+            {/* Quick Hero CTAs */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 mt-6">
+              <a
+                href="#Page4"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-zinc-950 font-bold text-xs sm:text-sm hover:bg-zinc-200 transition-all hover:scale-105 active:scale-95 shadow-lg group"
+              >
+                <span>View Projects</span>
+                <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
+              </a>
+              <a
+                href="#Page8"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/40 hover:bg-black/60 text-white font-medium text-xs sm:text-sm border border-white/20 backdrop-blur-md transition-all hover:scale-105 active:scale-95"
+              >
+                <span>Let’s Connect</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </a>
+            </div>
+          </motion.div>
 
           {/* Center Column: Hero Character Visual */}
-          <div className="lg:col-span-4 flex justify-center items-center z-10 my-4 lg:my-0">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7 }}
+            className="lg:col-span-4 flex justify-center items-center z-10 my-4 lg:my-0"
+          >
             <div className="relative">
               {/* Soft glow behind character */}
               <div className="absolute inset-0 -inset-x-4 bg-white/10 blur-3xl rounded-full scale-95 pointer-events-none" />
@@ -98,24 +128,34 @@ const Page1 = () => {
                 className="w-[240px] sm:w-[300px] lg:w-[460px] h-auto mx-auto drop-shadow-[0_20px_35px_rgba(0,0,0,0.8)] float-animation select-none"
               />
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Motto & Focus Statement */}
-          <div className="lg:col-span-4 text-center lg:text-left z-20 lg:pl-6">
-            <div className="glass-panel p-6 sm:p-7 rounded-2xl max-w-md mx-auto lg:mx-0">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="lg:col-span-4 text-center lg:text-left z-20 lg:pl-6"
+          >
+            <div className="glass-panel p-6 sm:p-7 rounded-2xl max-w-md mx-auto lg:mx-0 shadow-2xl">
               <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-tight leading-snug">
                 Learning daily. Creating often. Building slowly.
               </h2>
               <div className="w-12 h-1 bg-gradient-to-r from-orange-400 to-amber-300 rounded-full my-3.5 mx-auto lg:mx-0" />
-              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal">
                 Every line of code is a step toward the future I’m building for myself. Crafting thoughtful systems from backend architectures to fluid user interfaces.
               </p>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Focus Tags */}
-        <div className="relative z-20 max-w-5xl mx-auto px-4 mt-8 lg:mt-12 flex flex-wrap justify-center items-center gap-2.5 sm:gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="relative z-20 max-w-5xl mx-auto px-4 mt-8 lg:mt-12 flex flex-wrap justify-center items-center gap-2.5 sm:gap-4"
+        >
           {[
             "#PROBLEM SOLVING",
             "#CRITICAL THINKING",
@@ -124,12 +164,12 @@ const Page1 = () => {
           ].map((tag) => (
             <span
               key={tag}
-              className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase border backdrop-blur-md transition-all duration-300 ${getTagColor()}`}
+              className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase border backdrop-blur-md transition-all duration-300 hover:scale-105 cursor-default ${getTagColor()}`}
             >
               {tag}
             </span>
           ))}
-        </div>
+        </motion.div>
 
         {/* Theme Switcher Controls */}
         <div className="absolute bottom-5 right-5 sm:right-8 z-30 flex items-center gap-2.5 px-3 py-2 rounded-full bg-black/50 backdrop-blur-xl border border-white/15 shadow-xl">

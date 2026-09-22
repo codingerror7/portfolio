@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
-import { Briefcase, Laptop, CheckCircle2, Calendar } from "lucide-react"
+import { motion } from 'framer-motion'
+import { Briefcase, Laptop, CheckCircle2, Calendar, Sparkles } from "lucide-react"
 
 const experiences = [
   {
@@ -14,12 +15,13 @@ const experiences = [
     glow: "hover:shadow-[0_0_35px_rgba(16,185,129,0.35)]",
     accent: "text-emerald-400",
     iconBg: "bg-emerald-500/10 border-emerald-500/30 text-emerald-400",
+    badgeStyle: "text-emerald-200 bg-emerald-950/40 border-emerald-500/30 shadow-sm",
     points: [
-      "Redesigned and elevated the core website UI/UX using Figma and ReactJS for intuitive navigation.",
-      "Optimized frontend bundle and asset loading, significantly improving site speed and responsiveness.",
-      "Built and maintained scalable MERN stack features, RESTful APIs, and MongoDB integrations.",
-      "Enhanced user experience with fluid micro-interactions, smooth component transitions, and clean layouts.",
-      "Collaborated in a fast-paced agile environment, practicing active code reviews and version control.",
+      <>Redesigned and elevated the <span className="text-white font-semibold">core website UI/UX</span> using Figma and ReactJS for intuitive user navigation.</>,
+      <>Optimized frontend bundle and asset loading, significantly <span className="text-white font-semibold">improving site speed and responsiveness</span>.</>,
+      <>Built and maintained scalable <span className="text-white font-semibold">MERN stack features, RESTful APIs</span>, and MongoDB database integrations.</>,
+      <>Enhanced overall UX with <span className="text-white font-semibold">fluid micro-interactions</span>, smooth component transitions, and clean layout hierarchy.</>,
+      <>Collaborated in a fast-paced agile environment, practicing active code reviews, issue tracking, and version control.</>,
     ],
     skills: ["ReactJS", "JavaScript", "Figma", "MongoDB", "Express", "Node.js"],
   },
@@ -34,12 +36,13 @@ const experiences = [
     glow: "hover:shadow-[0_0_35px_rgba(245,158,11,0.35)]",
     accent: "text-amber-400",
     iconBg: "bg-amber-500/10 border-amber-500/30 text-amber-400",
+    badgeStyle: "text-amber-200 bg-amber-950/40 border-amber-500/30 shadow-sm",
     points: [
-      "Partnered with clients to gather technical requirements, scope deliverables, and architect tailored solutions.",
-      "Engineered end-to-end full-stack applications with high aesthetic polish, responsive UI, and secure authentication.",
-      "Built custom backend REST endpoints, handled database schemas, and configured production deployments.",
-      "Ensured cross-browser compatibility, accessible navigation, and optimal mobile responsiveness.",
-      "Delivered reliable client communication, milestone updates, and post-launch maintenance.",
+      <>Partnered directly with clients to gather technical requirements, scope deliverables, and architect <span className="text-white font-semibold">tailored web solutions</span>.</>,
+      <>Engineered end-to-end full-stack applications with <span className="text-white font-semibold">high aesthetic polish</span>, responsive UI, and secure authentication.</>,
+      <>Built custom <span className="text-white font-semibold">backend REST endpoints</span>, handled database schemas, and configured production cloud deployments.</>,
+      <>Ensured cross-browser compatibility, accessible navigation, and optimal mobile performance.</>,
+      <>Delivered reliable client communication, transparent milestone updates, and post-launch maintenance support.</>,
     ],
     skills: ["ReactJS", "JavaScript", "Node.js", "Express", "MongoDB", "TailwindCSS"],
   },
@@ -54,7 +57,13 @@ const Page7 = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-4xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-4xl mx-auto mb-16"
+        >
           <span className="uppercase tracking-widest text-xs sm:text-sm font-semibold text-emerald-400">
             Professional Track Record
           </span>
@@ -66,30 +75,37 @@ const Page7 = () => {
           <p className="text-zinc-400 text-sm sm:text-base lg:text-lg mt-4 leading-relaxed">
             Hands-on software development experience across production team environments and independent client projects.
           </p>
-        </div>
+        </motion.div>
 
         {/* Experience Cards Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {experiences.map((exp, idx) => {
             const Icon = exp.icon
             return (
-              <div
+              <motion.div
                 key={idx}
-                className={`p-8 sm:p-10 rounded-3xl bg-gradient-to-br ${exp.gradient} border ${exp.border} backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 ${exp.glow} flex flex-col justify-between`}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: idx * 0.15 }}
+                className={`p-8 sm:p-10 rounded-3xl bg-gradient-to-br ${exp.gradient} border ${exp.border} backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 ${exp.glow} flex flex-col justify-between group overflow-hidden relative`}
               >
+                {/* Subtle top border highlight */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:via-white/40 transition-all duration-500" />
+
                 <div>
                   {/* Card Header */}
                   <div className="flex items-center justify-between gap-4 mb-6">
-                    <div className={`p-3.5 rounded-2xl border ${exp.iconBg}`}>
+                    <div className={`p-3.5 rounded-2xl border ${exp.iconBg} group-hover:scale-110 transition-transform duration-300 shadow-md`}>
                       <Icon className="w-7 h-7" />
                     </div>
-                    <span className="flex items-center gap-1.5 text-xs text-zinc-400 font-mono">
-                      <Calendar className="w-3.5 h-3.5" />
+                    <span className="flex items-center gap-1.5 text-xs text-zinc-300 font-mono px-3 py-1 rounded-full bg-white/5 border border-white/10">
+                      <Calendar className="w-3.5 h-3.5 text-zinc-400" />
                       {exp.duration}
                     </span>
                   </div>
 
-                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-1">
+                  <h3 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-1 group-hover:text-zinc-100 transition-colors">
                     {exp.company}
                   </h3>
 
@@ -98,7 +114,7 @@ const Page7 = () => {
                   </p>
 
                   {/* Bullet points */}
-                  <ul className="space-y-3 mb-8">
+                  <ul className="space-y-3.5 mb-8">
                     {exp.points.map((pt, i) => (
                       <li key={i} className="flex items-start gap-3 text-zinc-300 text-xs sm:text-sm leading-relaxed">
                         <CheckCircle2 className={`w-4 h-4 shrink-0 mt-0.5 ${exp.accent}`} />
@@ -110,14 +126,14 @@ const Page7 = () => {
 
                 {/* Skills Footer */}
                 <div className="pt-6 border-t border-white/10">
-                  <span className="text-xs uppercase font-semibold text-zinc-400 tracking-wider block mb-2.5">
+                  <span className="text-xs uppercase font-semibold text-zinc-400 tracking-wider block mb-3">
                     Technologies Applied:
                   </span>
                   <div className="flex flex-wrap gap-2">
                     {exp.skills.map((skill) => (
                       <span
                         key={skill}
-                        className="px-3 py-1 rounded-full text-xs font-medium text-zinc-200 bg-white/5 border border-white/10"
+                        className={`px-3 py-1 rounded-full text-xs font-medium border ${exp.badgeStyle} transition-transform duration-200 hover:scale-105 cursor-default`}
                       >
                         {skill}
                       </span>
@@ -125,7 +141,7 @@ const Page7 = () => {
                   </div>
                 </div>
 
-              </div>
+              </motion.div>
             )
           })}
         </div>

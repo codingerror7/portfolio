@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from 'react'
+import { motion } from 'framer-motion'
 import {
   Linkedin,
   Github,
@@ -10,6 +11,7 @@ import {
   Copy,
   Check,
   ArrowUpRight,
+  Send,
 } from "lucide-react"
 import Lottie from 'lottie-react'
 import Hi from '../public/Hi.json'
@@ -86,31 +88,45 @@ const Page8 = () => {
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         
         {/* Section Header */}
-        <span className="uppercase tracking-widest text-xs sm:text-sm font-semibold text-emerald-400">
-          Get In Touch
-        </span>
-        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mt-2 mb-4">
-          Let’s <span className="text-emerald-400">Connect</span>
-        </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full mx-auto mb-6" />
-        <p className="text-zinc-400 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed mb-14">
-          Open to full-time engineering roles, freelance opportunities, open source projects, and meaningful technical conversations. Let’s build something impactful together.
-        </p>
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.5 }}
+        >
+          <span className="uppercase tracking-widest text-xs sm:text-sm font-semibold text-emerald-400">
+            Get In Touch
+          </span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mt-2 mb-4">
+            Let’s <span className="text-emerald-400">Connect</span>
+          </h2>
+          <div className="w-20 h-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full mx-auto mb-6" />
+          <p className="text-zinc-300 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed mb-14 font-normal">
+            Open to full-time engineering roles, freelance opportunities, open source projects, and meaningful technical conversations. Let’s build something impactful together.
+          </p>
+        </motion.div>
 
         {/* Contact Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5 sm:gap-6 mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5 sm:gap-6 mb-16">
           {contacts.map((item, idx) => {
             const Icon = item.icon
             return (
-              <div
+              <motion.div
                 key={idx}
-                className={`group relative p-6 sm:p-7 rounded-2xl bg-zinc-950/80 border ${item.border} backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 ${item.glow} flex flex-col justify-between text-center`}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+                className={`group relative p-6 sm:p-7 rounded-2xl bg-zinc-950/80 border ${item.border} backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 ${item.glow} flex flex-col justify-between text-center overflow-hidden`}
               >
+                {/* Subtle top border highlight */}
+                <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:via-white/35 transition-all" />
+
                 <div>
-                  <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  <div className="w-14 h-14 mx-auto mb-4 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-md">
                     <Icon className={`w-7 h-7 ${item.color}`} />
                   </div>
-                  <h3 className="text-lg font-bold text-white mb-1">
+                  <h3 className="text-lg font-bold text-white mb-1 group-hover:text-zinc-100 transition-colors">
                     {item.title}
                   </h3>
                   <p className="text-xs text-zinc-400 mb-4">
@@ -123,7 +139,7 @@ const Page8 = () => {
                     href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-zinc-200 hover:text-white transition-colors"
+                    className="inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-zinc-200 hover:text-white transition-all hover:scale-105"
                   >
                     <span>Open</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
@@ -148,13 +164,19 @@ const Page8 = () => {
                     </button>
                   )}
                 </div>
-              </div>
+              </motion.div>
             )
           })}
         </div>
 
-        {/* Download Resume Main CTA Button */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16">
+        {/* CTA Buttons: Primary Resume + Secondary Direct Email */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-5 mb-16"
+        >
           <a
             href="/Sujal_resume.pdf"
             download="Sujal_resume.pdf"
@@ -163,12 +185,20 @@ const Page8 = () => {
             <Download className="w-5 h-5" />
             <span>Download Full Resume</span>
           </a>
-        </div>
+
+          <a
+            href="mailto:saraswatsujal@gmail.com"
+            className="inline-flex items-center gap-2.5 px-8 sm:px-9 py-4 rounded-full bg-white/5 border border-white/20 text-white font-semibold text-base sm:text-lg hover:bg-white/10 hover:border-white/40 transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg backdrop-blur-md"
+          >
+            <Send className="w-5 h-5 text-cyan-400" />
+            <span>Send Direct Email</span>
+          </a>
+        </motion.div>
 
         {/* Closing Mascot / Greeting Illustration */}
         <div className="max-w-[420px] sm:max-w-[550px] mx-auto opacity-90">
           <Lottie
-            className="w-full h-auto"
+            className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.4)]"
             animationData={Hi}
             loop={true}
           />
