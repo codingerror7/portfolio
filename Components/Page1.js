@@ -57,7 +57,7 @@ const Page1 = () => {
 
         {/* Hero Content Grid */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-8 lg:pt-12 grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-4">
-          
+
           {/* Left Column: Intro & Name */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -182,11 +182,10 @@ const Page1 = () => {
               onClick={() => setTheme(t.id)}
               aria-label={`Switch to ${t.name}`}
               title={t.name}
-              className={`w-6 h-6 rounded-full ${t.color} transition-all duration-200 cursor-pointer ${
-                theme === t.id
+              className={`w-6 h-6 rounded-full ${t.color} transition-all duration-200 cursor-pointer ${theme === t.id
                   ? 'ring-2 ring-white scale-110 shadow-[0_0_10px_rgba(255,255,255,0.6)]'
                   : 'opacity-70 hover:opacity-100 hover:scale-105'
-              }`}
+                }`}
             />
           ))}
         </div>

@@ -30,7 +30,7 @@ html, body {
 }
 
 .swiper-wrapper {
-  transition-timing-function: linear !important;
+  will-change: transform;
 }
 
 @keyframes float {
