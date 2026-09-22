@@ -4,16 +4,14 @@ import Lottie from 'lottie-react'
 import Wave from '../public/Wave.json'
 import Snowfall from 'react-snowfall'
 import { motion } from 'framer-motion'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import 'swiper/css'
 import {
   Code2,
   Server,
   Cpu,
   Rocket,
-  ArrowUpRight,
-  Sparkles,
-  Layers,
   Terminal,
-  Database,
 } from 'lucide-react'
 
 const engineeringPillars = [
@@ -87,9 +85,94 @@ const engineeringPillars = [
   },
 ]
 
-const Page2 = () => {
-  const [activeStep, setActiveStep] = useState(null)
+// Reusable card component for both desktop grid and mobile horizontal carousel
+const PillarCard = ({ pillar, isMobile = false }) => {
+  const IconComponent = pillar.icon
 
+  return (
+    <div
+      className={`group relative ${
+        isMobile ? 'p-5 sm:p-6' : 'p-7 sm:p-8'
+      } rounded-2xl bg-gradient-to-b ${pillar.gradient} border ${
+        pillar.border
+      } backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 ${
+        pillar.glow
+      } flex flex-col justify-between overflow-hidden cursor-default h-full`}
+    >
+      {/* Subtle Ambient Radial Corner Highlight */}
+      <div
+        className={`absolute -top-12 -right-12 w-40 h-40 ${pillar.cornerGlow} rounded-full blur-3xl pointer-events-none opacity-30 group-hover:opacity-100 transition-opacity duration-500`}
+      />
+
+      {/* Top ambient highlight line */}
+      <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:via-white/40 transition-all duration-500" />
+
+      <div>
+        {/* Header: Step Number + Icon & Role Tag */}
+        <div className="flex items-center justify-between mb-3.5 sm:mb-4">
+          <div className="flex items-center gap-2.5 sm:gap-3">
+            <span
+              className={`font-mono ${
+                isMobile ? 'text-2xl' : 'text-2xl sm:text-3xl'
+              } font-extrabold text-zinc-500 transition-all duration-300 ${pillar.numberColor}`}
+            >
+              {pillar.step}
+            </span>
+            <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-zinc-400 transition-colors" />
+            <span className="text-[11px] sm:text-xs uppercase tracking-wider font-mono text-zinc-400 font-medium">
+              {pillar.role}
+            </span>
+          </div>
+
+          <div className="p-2 sm:p-2.5 rounded-xl bg-white/[0.04] border border-white/10 group-hover:scale-110 group-hover:border-white/25 transition-all duration-300 shrink-0">
+            <IconComponent className={`w-4 h-4 sm:w-5 sm:h-5 ${pillar.accent}`} />
+          </div>
+        </div>
+
+        {/* Pillar Action & Tagline */}
+        <div className="mb-2.5 sm:mb-3">
+          <h3
+            className={`${
+              isMobile ? 'text-lg' : 'text-xl sm:text-2xl'
+            } font-extrabold text-white tracking-tight flex items-center gap-2`}
+          >
+            <span>{pillar.action}</span>
+            <span className="text-zinc-600 font-normal text-xs sm:text-sm font-mono">•</span>
+            <span className={`text-xs sm:text-sm font-semibold ${pillar.accent}`}>
+              {pillar.tagline}
+            </span>
+          </h3>
+          {/* Expanding accent bar */}
+          <div
+            className={`h-[2px] w-8 group-hover:w-20 bg-gradient-to-r ${pillar.barColor} rounded-full mt-2 transition-all duration-300`}
+          />
+        </div>
+
+        {/* Description */}
+        <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-5 sm:mb-6 font-normal">
+          {pillar.description}
+        </p>
+      </div>
+
+      {/* Technologies Applied Footer */}
+      <div className="pt-3.5 sm:pt-4 border-t border-white/10 flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <span className="text-[10px] uppercase font-mono tracking-wider text-zinc-400 mr-1">
+          Stack:
+        </span>
+        {pillar.tech.map((t) => (
+          <span
+            key={t}
+            className="px-2 sm:px-2.5 py-0.5 sm:py-1 text-[10px] sm:text-[11px] font-medium rounded-md bg-white/[0.04] border border-white/10 text-zinc-300 group-hover:border-white/20 group-hover:text-white transition-all duration-200"
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+const Page2 = () => {
   return (
     <section id="Page2" className="relative min-h-screen w-full overflow-hidden bg-black py-20 lg:py-28">
       {/* Subtle background snowfall ambience */}
@@ -198,7 +281,7 @@ const Page2 = () => {
         />
       </div>
 
-      {/* Section Header: What I Actually Do (Editorial Technical Workflow) */}
+      {/* Section Header: What I Actually Do */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -219,91 +302,41 @@ const Page2 = () => {
         </p>
       </motion.div>
 
-      {/* 4 Technical Engineering Pillars Grid */}
-      <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-6xl mx-auto mt-12 px-4 sm:px-6">
-        {engineeringPillars.map((pillar, index) => {
-          const IconComponent = pillar.icon
-          const isHovered = activeStep === index
+      {/* MOBILE ONLY: Horizontal Touch Swipe Carousel (< md) */}
+      <div className="block md:hidden mt-8 px-4 w-full overflow-hidden">
+        <Swiper
+          slidesPerView={1.12}
+          spaceBetween={14}
+          grabCursor={true}
+          allowTouchMove={true}
+          watchOverflow={true}
+          className="w-full select-none py-2"
+        >
+          {engineeringPillars.map((pillar) => (
+            <SwiperSlide key={`mobile-${pillar.step}`} className="h-auto">
+              <PillarCard pillar={pillar} isMobile={true} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className="flex items-center justify-center gap-1.5 mt-3 text-[11px] text-zinc-500 font-mono">
+          <span>← Swipe horizontally to explore →</span>
+        </div>
+      </div>
 
-          return (
-            <motion.div
-              key={pillar.step}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              onMouseEnter={() => setActiveStep(index)}
-              onMouseLeave={() => setActiveStep(null)}
-              className={`group relative p-7 sm:p-8 rounded-2xl bg-gradient-to-b ${pillar.gradient} border ${pillar.border} backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 ${pillar.glow} flex flex-col justify-between overflow-hidden cursor-default`}
-            >
-              {/* Subtle Ambient Radial Corner Highlight */}
-              <div
-                className={`absolute -top-12 -right-12 w-40 h-40 ${pillar.cornerGlow} rounded-full blur-3xl pointer-events-none transition-opacity duration-500 ${
-                  isHovered ? 'opacity-100' : 'opacity-30'
-                }`}
-              />
-
-              {/* Top ambient highlight line */}
-              <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-transparent via-white/15 to-transparent group-hover:via-white/40 transition-all duration-500" />
-
-              <div>
-                {/* Header: Step Number + Icon & Role Tag */}
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
-                    <span
-                      className={`font-mono text-2xl sm:text-3xl font-extrabold text-zinc-500 transition-all duration-300 ${pillar.numberColor}`}
-                    >
-                      {pillar.step}
-                    </span>
-                    <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-zinc-400 transition-colors" />
-                    <span className="text-xs uppercase tracking-wider font-mono text-zinc-400 font-medium">
-                      {pillar.role}
-                    </span>
-                  </div>
-
-                  <div className="p-2.5 rounded-xl bg-white/[0.04] border border-white/10 group-hover:scale-110 group-hover:border-white/25 transition-all duration-300">
-                    <IconComponent className={`w-5 h-5 ${pillar.accent}`} />
-                  </div>
-                </div>
-
-                {/* Pillar Action & Tagline */}
-                <div className="mb-3">
-                  <h3 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight flex items-center gap-2">
-                    <span>{pillar.action}</span>
-                    <span className="text-zinc-600 font-normal text-sm font-mono">•</span>
-                    <span className={`text-sm font-semibold ${pillar.accent}`}>
-                      {pillar.tagline}
-                    </span>
-                  </h3>
-                  {/* Expanding accent bar */}
-                  <div
-                    className={`h-[2px] w-8 group-hover:w-20 bg-gradient-to-r ${pillar.barColor} rounded-full mt-2.5 transition-all duration-300`}
-                  />
-                </div>
-
-                {/* Description */}
-                <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-6 font-normal">
-                  {pillar.description}
-                </p>
-              </div>
-
-              {/* Technologies Applied Footer */}
-              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-2">
-                <span className="text-[10px] uppercase font-mono tracking-wider text-zinc-400 mr-1">
-                  Stack:
-                </span>
-                {pillar.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="px-2.5 py-1 text-[11px] font-medium rounded-md bg-white/[0.04] border border-white/10 text-zinc-300 group-hover:border-white/20 group-hover:text-white transition-all duration-200"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          )
-        })}
+      {/* DESKTOP & TABLET: Structured 2-Column Grid (>= md) */}
+      <div className="hidden md:grid md:grid-cols-2 gap-6 w-full max-w-6xl mx-auto mt-12 px-4 sm:px-6">
+        {engineeringPillars.map((pillar, index) => (
+          <motion.div
+            key={`desktop-${pillar.step}`}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+            className="h-full"
+          >
+            <PillarCard pillar={pillar} isMobile={false} />
+          </motion.div>
+        ))}
       </div>
     </section>
   )
