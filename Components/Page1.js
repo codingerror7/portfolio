@@ -65,9 +65,7 @@ const Page1 = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-4 text-center lg:text-left z-20"
           >
-            <span className="inline-block px-3.5 py-1 mb-3 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase bg-white/10 text-zinc-200 backdrop-blur-md border border-white/15">
-              Full Stack Developer
-            </span>
+            
             <p className="text-zinc-200 text-lg sm:text-xl lg:text-2xl font-medium tracking-wide">
               Hey, I am
             </p>
