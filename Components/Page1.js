@@ -65,7 +65,7 @@ const Page1 = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-4 text-center lg:text-left z-20"
           >
-            <p className="text-zinc-200 text-base sm:text-xl lg:text-2xl font-medium tracking-wide">
+            <p className="text-zinc-200 text-base sm:text-xl mt-20 lg:mt-0 lg:text-2xl font-medium tracking-wide">
               Hey, I am
             </p>
             <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white mt-1.5 sm:mt-2 mb-3 sm:mb-4 leading-tight">
@@ -146,27 +146,6 @@ const Page1 = () => {
           </motion.div>
         </div>
 
-        {/* Focus Tags */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative z-20 max-w-5xl mx-auto px-4 mt-6 sm:mt-10 lg:mt-12 flex flex-wrap justify-center items-center gap-2 sm:gap-3.5"
-        >
-          {[
-            "#PROBLEM SOLVING",
-            "#CRITICAL THINKING",
-            "#SOFTWARE DEVELOPMENT",
-            "#LOGIC BUILDING",
-          ].map((tag) => (
-            <span
-              key={tag}
-              className={`px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wider uppercase border backdrop-blur-md transition-all duration-300 hover:scale-105 cursor-default ${getTagColor()}`}
-            >
-              {tag}
-            </span>
-          ))}
-        </motion.div>
 
         {/* Theme Switcher Controls */}
         <div className="relative mt-6 sm:mt-0 sm:absolute sm:bottom-5 sm:right-8 z-30 flex items-center justify-center gap-2 sm:gap-2.5 px-3 py-1.5 sm:py-2 rounded-full bg-black/60 backdrop-blur-xl border border-white/15 shadow-xl w-fit mx-auto sm:mx-0">
