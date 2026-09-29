@@ -50,10 +50,10 @@ const Mainslider = () => {
   return (
     <div className="w-full py-5 sm:py-6 relative overflow-hidden bg-black/60 border-y border-white/5">
       {/* Edge gradient masks for seamless fade out */}
-      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
-      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-black via-black/80 to-transparent z-10" />
+      <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-8 sm:w-16 lg:w-20 bg-gradient-to-r from-black via-black/80 to-transparent z-10" />
+      <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 sm:w-16 lg:w-20 bg-gradient-to-l from-black via-black/80 to-transparent z-10" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6">
         <Swiper
           modules={[Autoplay]}
           loop={true}
@@ -67,12 +67,12 @@ const Mainslider = () => {
           watchSlidesProgress={true}
           breakpoints={{
             0: {
-              slidesPerView: 3.2,
-              spaceBetween: 16,
+              slidesPerView: 3.5,
+              spaceBetween: 10,
             },
             480: {
               slidesPerView: 4.5,
-              spaceBetween: 20,
+              spaceBetween: 18,
             },
             768: {
               slidesPerView: 6.5,

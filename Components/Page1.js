@@ -56,7 +56,7 @@ const Page1 = () => {
         <Navbar />
 
         {/* Hero Content Grid */}
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-8 lg:pt-12 grid grid-cols-1 lg:grid-cols-12 items-center gap-8 lg:gap-4">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-4 sm:pt-8 lg:pt-12 grid grid-cols-1 lg:grid-cols-12 items-center gap-6 sm:gap-8 lg:gap-4">
 
           {/* Left Column: Intro & Name */}
           <motion.div
@@ -65,11 +65,10 @@ const Page1 = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-4 text-center lg:text-left z-20"
           >
-            
-            <p className="text-zinc-200 text-lg sm:text-xl lg:text-2xl font-medium tracking-wide">
+            <p className="text-zinc-200 text-base sm:text-xl lg:text-2xl font-medium tracking-wide">
               Hey, I am
             </p>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white mt-2 mb-4 leading-none">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white mt-1.5 sm:mt-2 mb-3 sm:mb-4 leading-tight">
               <span className="block min-h-[1.2em]">
                 <Typewriter
                   words={[
@@ -87,22 +86,22 @@ const Page1 = () => {
                 />
               </span>
             </h1>
-            <p className="text-zinc-300 text-sm sm:text-base leading-relaxed max-w-md mx-auto lg:mx-0 font-normal">
+            <p className="text-zinc-300 text-xs sm:text-base leading-relaxed max-w-md mx-auto lg:mx-0 font-normal">
               Building modern, scalable web applications with clean logic and visually engaging digital craftsmanship.
             </p>
 
             {/* Quick Hero CTAs */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 mt-6">
+            <div className="flex flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3.5 mt-5 sm:mt-6">
               <a
                 href="#Page4"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white text-zinc-950 font-bold text-xs sm:text-sm hover:bg-zinc-200 transition-all hover:scale-105 active:scale-95 shadow-lg group"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-white text-zinc-950 font-bold text-xs sm:text-sm hover:bg-zinc-200 transition-all hover:scale-105 active:scale-95 shadow-lg group"
               >
                 <span>View Projects</span>
                 <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
               </a>
               <a
                 href="#Page8"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/40 hover:bg-black/60 text-white font-medium text-xs sm:text-sm border border-white/20 backdrop-blur-md transition-all hover:scale-105 active:scale-95"
+                className="inline-flex items-center gap-1.5 sm:gap-2 px-4 py-2 sm:px-5 sm:py-2.5 rounded-full bg-black/40 hover:bg-black/60 text-white font-medium text-xs sm:text-sm border border-white/20 backdrop-blur-md transition-all hover:scale-105 active:scale-95"
               >
                 <span>Let’s Connect</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -115,7 +114,7 @@ const Page1 = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7 }}
-            className="lg:col-span-4 flex justify-center items-center z-10 my-4 lg:my-0"
+            className="lg:col-span-4 flex justify-center items-center z-10 my-2 sm:my-4 lg:my-0"
           >
             <div className="relative">
               {/* Soft glow behind character */}
@@ -123,7 +122,7 @@ const Page1 = () => {
               <img
                 src="./img6.png"
                 alt="Sujal Saraswat"
-                className="w-[240px] sm:w-[300px] lg:w-[460px] h-auto mx-auto drop-shadow-[0_20px_35px_rgba(0,0,0,0.8)] float-animation select-none"
+                className="w-[190px] sm:w-[270px] lg:w-[460px] h-auto mx-auto drop-shadow-[0_20px_35px_rgba(0,0,0,0.8)] float-animation select-none"
               />
             </div>
           </motion.div>
@@ -135,22 +134,43 @@ const Page1 = () => {
             transition={{ duration: 0.6 }}
             className="lg:col-span-4 text-center lg:text-left z-20 lg:pl-6"
           >
-            <div className="glass-panel p-6 sm:p-7 rounded-2xl max-w-md mx-auto lg:mx-0 shadow-2xl">
-              <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white tracking-tight leading-snug">
+            <div className="glass-panel p-4.5 sm:p-7 rounded-2xl max-w-md mx-auto lg:mx-0 shadow-2xl">
+              <h2 className="text-base sm:text-xl lg:text-2xl font-bold text-white tracking-tight leading-snug">
                 Learning daily. Creating often. Building slowly.
               </h2>
-              <div className="w-12 h-1 bg-gradient-to-r from-orange-400 to-amber-300 rounded-full my-3.5 mx-auto lg:mx-0" />
-              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed font-normal">
+              <div className="w-12 h-1 bg-gradient-to-r from-orange-400 to-amber-300 rounded-full my-2.5 sm:my-3.5 mx-auto lg:mx-0" />
+              <p className="text-xs sm:text-base text-zinc-300 leading-relaxed font-normal">
                 Every line of code is a step toward the future I’m building for myself. Crafting thoughtful systems from backend architectures to fluid user interfaces.
               </p>
             </div>
           </motion.div>
         </div>
 
+        {/* Focus Tags */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="relative z-20 max-w-5xl mx-auto px-4 mt-6 sm:mt-10 lg:mt-12 flex flex-wrap justify-center items-center gap-2 sm:gap-3.5"
+        >
+          {[
+            "#PROBLEM SOLVING",
+            "#CRITICAL THINKING",
+            "#SOFTWARE DEVELOPMENT",
+            "#LOGIC BUILDING",
+          ].map((tag) => (
+            <span
+              key={tag}
+              className={`px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-wider uppercase border backdrop-blur-md transition-all duration-300 hover:scale-105 cursor-default ${getTagColor()}`}
+            >
+              {tag}
+            </span>
+          ))}
+        </motion.div>
 
         {/* Theme Switcher Controls */}
-        <div className="absolute bottom-5 right-5 sm:right-8 z-30 flex items-center gap-2.5 px-3 py-2 rounded-full bg-black/50 backdrop-blur-xl border border-white/15 shadow-xl">
-          <span className="hidden sm:inline text-xs uppercase tracking-wider text-zinc-400 font-medium pl-1">
+        <div className="relative mt-6 sm:mt-0 sm:absolute sm:bottom-5 sm:right-8 z-30 flex items-center justify-center gap-2 sm:gap-2.5 px-3 py-1.5 sm:py-2 rounded-full bg-black/60 backdrop-blur-xl border border-white/15 shadow-xl w-fit mx-auto sm:mx-0">
+          <span className="text-[10px] sm:text-xs uppercase tracking-wider text-zinc-400 font-medium pl-1">
             Theme
           </span>
           {themes.map((t) => (
@@ -159,10 +179,11 @@ const Page1 = () => {
               onClick={() => setTheme(t.id)}
               aria-label={`Switch to ${t.name}`}
               title={t.name}
-              className={`w-6 h-6 rounded-full ${t.color} transition-all duration-200 cursor-pointer ${theme === t.id
+              className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full ${t.color} transition-all duration-200 cursor-pointer ${
+                theme === t.id
                   ? 'ring-2 ring-white scale-110 shadow-[0_0_10px_rgba(255,255,255,0.6)]'
                   : 'opacity-70 hover:opacity-100 hover:scale-105'
-                }`}
+              }`}
             />
           ))}
         </div>

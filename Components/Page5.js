@@ -47,15 +47,15 @@ const educationList = [
 
 const Page5 = () => {
   return (
-    <section id="Education" className="min-h-screen w-full overflow-hidden bg-black py-20 lg:py-28">
+    <section id="Education" className="min-h-screen w-full overflow-hidden bg-black py-14 sm:py-20 lg:py-28">
       {/* Top Header & Intro Visual */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col-reverse lg:flex-row items-center justify-between gap-10 mb-16 lg:mb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 flex flex-col-reverse lg:flex-row items-center justify-between gap-6 sm:gap-10 mb-10 sm:mb-16 lg:mb-24">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, margin: "-60px" }}
           transition={{ duration: 0.5 }}
-          className="w-full max-w-[320px] sm:max-w-[380px] lg:max-w-[420px] flex justify-center"
+          className="w-full max-w-[220px] sm:max-w-[320px] lg:max-w-[420px] flex justify-center"
         >
           <Lottie
             className="w-full h-auto drop-shadow-[0_15px_30px_rgba(0,0,0,0.5)]"
@@ -71,28 +71,28 @@ const Page5 = () => {
           transition={{ duration: 0.5 }}
           className="w-full lg:w-[55%] text-center lg:text-left"
         >
-          <span className="uppercase tracking-widest text-xs sm:text-sm font-semibold text-emerald-400">
+          <span className="uppercase tracking-widest text-[11px] sm:text-sm font-semibold text-emerald-400">
             Academic Background
           </span>
-          <h2 className="uppercase font-extrabold text-3xl sm:text-4xl lg:text-6xl text-white leading-tight mt-2">
+          <h2 className="uppercase font-extrabold text-2xl sm:text-4xl lg:text-6xl text-white leading-tight mt-2">
             Learning Path — My <span className="text-emerald-400">Education</span>
           </h2>
-          <div className="w-20 h-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full mx-auto lg:mx-0 mt-4" />
-          <p className="text-zinc-300 text-base sm:text-lg lg:text-xl font-medium mt-5 max-w-xl leading-relaxed">
+          <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full mx-auto lg:mx-0 mt-3 sm:mt-4" />
+          <p className="text-zinc-300 text-xs sm:text-lg lg:text-xl font-medium mt-3 sm:mt-5 max-w-xl leading-relaxed">
             I may not be from a top-tier institute, but I strive every day to build top-tier, production-ready work.
           </p>
         </motion.div>
       </div>
 
       {/* Main Responsive Timeline Layout */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         
         {/* Timeline Column (8 cols on lg) */}
         <div className="lg:col-span-8 relative">
           {/* Vertical Timeline Track Line */}
-          <div className="absolute left-4 sm:left-6 top-3 bottom-3 w-[2px] bg-gradient-to-b from-purple-500 via-amber-500 to-emerald-500 rounded-full" />
+          <div className="absolute left-3.5 sm:left-6 top-3 bottom-3 w-[2px] bg-gradient-to-b from-purple-500 via-amber-500 to-emerald-500 rounded-full" />
 
-          <div className="space-y-10 sm:space-y-12">
+          <div className="space-y-6 sm:space-y-10">
             {educationList.map((item, index) => (
               <motion.div
                 key={index}
@@ -100,42 +100,42 @@ const Page5 = () => {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true, margin: "-40px" }}
                 transition={{ duration: 0.45, delay: index * 0.12 }}
-                className="relative pl-12 sm:pl-16 group"
+                className="relative pl-10 sm:pl-16 group"
               >
                 {/* Glowing Node Dot on Timeline */}
                 <div
-                  className={`absolute left-[9px] sm:left-[17px] top-6 w-4 h-4 rounded-full bg-gradient-to-br ${item.dotColor} ring-4 ring-black shadow-lg transition-transform duration-300 group-hover:scale-125`}
+                  className={`absolute left-[7px] sm:left-[17px] top-5 sm:top-6 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-gradient-to-br ${item.dotColor} ring-4 ring-black shadow-lg transition-transform duration-300 group-hover:scale-125`}
                 />
 
                 {/* Education Card */}
                 <div
-                  className={`p-6 sm:p-8 rounded-2xl bg-zinc-950/80 border border-white/10 ${item.borderColor} backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 shadow-lg ${item.glowColor}`}
+                  className={`p-4.5 sm:p-7 rounded-xl sm:rounded-2xl bg-zinc-950/80 border border-white/10 ${item.borderColor} backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 shadow-lg ${item.glowColor}`}
                 >
-                  <div className="flex flex-wrap items-center justify-between gap-2 mb-2">
-                    <span className={`px-3 py-0.5 rounded-full text-xs font-semibold border ${item.scoreBadge}`}>
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5 sm:mb-2">
+                    <span className={`px-2.5 sm:px-3 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold border ${item.scoreBadge}`}>
                       {item.score}
                     </span>
-                    <span className="flex items-center gap-1.5 text-xs text-zinc-400 font-mono">
-                      <Calendar className="w-3.5 h-3.5" />
+                    <span className="flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-400 font-mono">
+                      <Calendar className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
                       {item.duration}
                     </span>
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold text-white tracking-tight mt-2 mb-1 group-hover:text-zinc-100 transition-colors">
+                  <h3 className="text-base sm:text-xl lg:text-2xl font-bold text-white tracking-tight mt-1.5 sm:mt-2 mb-1 group-hover:text-zinc-100 transition-colors">
                     {item.degree}
                   </h3>
 
-                  <p className="text-sm sm:text-base font-semibold text-zinc-300 mb-3 flex items-center gap-2">
-                    <GraduationCap className="w-4 h-4 text-zinc-400" />
+                  <p className="text-xs sm:text-base font-semibold text-zinc-300 mb-2 sm:mb-3 flex items-center gap-1.5 sm:gap-2">
+                    <GraduationCap className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-zinc-400" />
                     {item.institute}
                   </p>
 
-                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-4 font-normal">
+                  <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed mb-3 sm:mb-4 font-normal">
                     {item.description}
                   </p>
 
-                  <div className="flex items-center gap-1.5 text-xs text-zinc-400 pt-3 border-t border-white/5">
-                    <MapPin className="w-3.5 h-3.5 text-zinc-400" />
+                  <div className="flex items-center gap-1.5 text-[11px] sm:text-xs text-zinc-400 pt-2.5 sm:pt-3 border-t border-white/5">
+                    <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-zinc-400" />
                     <span>{item.location}</span>
                   </div>
                 </div>

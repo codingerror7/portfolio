@@ -92,12 +92,12 @@ const PillarCard = ({ pillar, isMobile = false }) => {
   return (
     <div
       className={`group relative ${
-        isMobile ? 'p-5 sm:p-6' : 'p-7 sm:p-8'
+        isMobile ? 'p-4.5 sm:p-6' : 'p-7 sm:p-8'
       } rounded-2xl bg-gradient-to-b ${pillar.gradient} border ${
         pillar.border
       } backdrop-blur-xl transition-all duration-300 hover:-translate-y-1.5 ${
         pillar.glow
-      } flex flex-col justify-between overflow-hidden cursor-default h-full`}
+      } flex flex-col justify-between overflow-hidden cursor-default h-full min-h-[340px] sm:min-h-0`}
     >
       {/* Subtle Ambient Radial Corner Highlight */}
       <div
@@ -109,17 +109,17 @@ const PillarCard = ({ pillar, isMobile = false }) => {
 
       <div>
         {/* Header: Step Number + Icon & Role Tag */}
-        <div className="flex items-center justify-between mb-3.5 sm:mb-4">
-          <div className="flex items-center gap-2.5 sm:gap-3">
+        <div className="flex items-center justify-between mb-3 sm:mb-4">
+          <div className="flex items-center gap-2 sm:gap-3">
             <span
               className={`font-mono ${
-                isMobile ? 'text-2xl' : 'text-2xl sm:text-3xl'
+                isMobile ? 'text-xl' : 'text-2xl sm:text-3xl'
               } font-extrabold text-zinc-500 transition-all duration-300 ${pillar.numberColor}`}
             >
               {pillar.step}
             </span>
             <span className="w-1.5 h-1.5 rounded-full bg-zinc-700 group-hover:bg-zinc-400 transition-colors" />
-            <span className="text-[11px] sm:text-xs uppercase tracking-wider font-mono text-zinc-400 font-medium">
+            <span className="text-[10px] sm:text-xs uppercase tracking-wider font-mono text-zinc-400 font-medium">
               {pillar.role}
             </span>
           </div>
@@ -130,11 +130,11 @@ const PillarCard = ({ pillar, isMobile = false }) => {
         </div>
 
         {/* Pillar Action & Tagline */}
-        <div className="mb-2.5 sm:mb-3">
+        <div className="mb-2 sm:mb-3">
           <h3
             className={`${
-              isMobile ? 'text-lg' : 'text-xl sm:text-2xl'
-            } font-extrabold text-white tracking-tight flex items-center gap-2`}
+              isMobile ? 'text-base' : 'text-xl sm:text-2xl'
+            } font-extrabold text-white tracking-tight flex items-center gap-1.5 sm:gap-2 flex-wrap`}
           >
             <span>{pillar.action}</span>
             <span className="text-zinc-600 font-normal text-xs sm:text-sm font-mono">•</span>
@@ -144,19 +144,19 @@ const PillarCard = ({ pillar, isMobile = false }) => {
           </h3>
           {/* Expanding accent bar */}
           <div
-            className={`h-[2px] w-8 group-hover:w-20 bg-gradient-to-r ${pillar.barColor} rounded-full mt-2 transition-all duration-300`}
+            className={`h-[2px] w-8 group-hover:w-20 bg-gradient-to-r ${pillar.barColor} rounded-full mt-1.5 sm:mt-2 transition-all duration-300`}
           />
         </div>
 
         {/* Description */}
-        <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-5 sm:mb-6 font-normal">
+        <p className="text-zinc-300 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 font-normal">
           {pillar.description}
         </p>
       </div>
 
       {/* Technologies Applied Footer */}
-      <div className="pt-3.5 sm:pt-4 border-t border-white/10 flex flex-wrap items-center gap-1.5 sm:gap-2">
-        <span className="text-[10px] uppercase font-mono tracking-wider text-zinc-400 mr-1">
+      <div className="pt-3 sm:pt-4 border-t border-white/10 flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <span className="text-[9px] sm:text-[10px] uppercase font-mono tracking-wider text-zinc-400 mr-1">
           Stack:
         </span>
         {pillar.tech.map((t) => (
@@ -173,8 +173,10 @@ const PillarCard = ({ pillar, isMobile = false }) => {
 }
 
 const Page2 = () => {
+  const [activePillar, setActivePillar] = useState(0)
+
   return (
-    <section id="Page2" className="relative min-h-screen w-full overflow-hidden bg-black py-20 lg:py-28">
+    <section id="Page2" className="relative min-h-screen w-full overflow-hidden bg-black py-14 sm:py-20 lg:py-28">
       {/* Subtle background snowfall ambience */}
       <Snowfall
         snowflakeCount={30}
@@ -196,7 +198,7 @@ const Page2 = () => {
         <img
           src="./reactjs.png"
           alt="React Watermark"
-          className="w-28 sm:w-36 lg:w-48 h-auto rotating"
+          className="w-24 sm:w-36 lg:w-48 h-auto rotating"
         />
       </div>
 
@@ -207,7 +209,7 @@ const Page2 = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14 p-6 sm:p-10 lg:p-12 rounded-3xl bg-gradient-to-br from-zinc-900/90 via-emerald-950/30 to-zinc-950/90 border border-emerald-500/20 backdrop-blur-xl shadow-2xl shadow-emerald-950/30"
+          className="flex flex-col lg:flex-row items-center gap-6 sm:gap-10 lg:gap-14 p-5 sm:p-10 lg:p-12 rounded-2xl sm:rounded-3xl bg-gradient-to-br from-zinc-900/90 via-emerald-950/30 to-zinc-950/90 border border-emerald-500/20 backdrop-blur-xl shadow-2xl shadow-emerald-950/30"
         >
           {/* Profile Image with subtle frame */}
           <div className="relative shrink-0">
@@ -215,28 +217,28 @@ const Page2 = () => {
               <img
                 src="./myimage.jpg"
                 alt="Sujal Saraswat"
-                className="w-48 sm:w-60 lg:w-[280px] h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+                className="w-36 sm:w-52 lg:w-[280px] h-auto object-cover transition-transform duration-500 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
             </div>
             {/* Status indicator pill */}
-            <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full bg-black/80 border border-emerald-400/40 text-[11px] font-semibold tracking-wider text-emerald-300 flex items-center gap-1.5 whitespace-nowrap shadow-lg">
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-black/80 border border-emerald-400/40 text-[10px] sm:text-[11px] font-semibold tracking-wider text-emerald-300 flex items-center gap-1.5 whitespace-nowrap shadow-lg">
+              <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-400 animate-pulse" />
               OPEN TO WORK
             </div>
           </div>
 
           {/* Bio Content */}
-          <div className="flex flex-col gap-4 text-center lg:text-left">
-            <span className="uppercase tracking-widest text-xs sm:text-sm font-semibold text-emerald-400">
+          <div className="flex flex-col gap-3 sm:gap-4 text-center lg:text-left mt-2 lg:mt-0">
+            <span className="uppercase tracking-widest text-[11px] sm:text-sm font-semibold text-emerald-400">
               About Me
             </span>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
               Who <span className="text-emerald-400">I Am</span>
             </h2>
 
-            <p className="text-sm sm:text-base lg:text-lg text-zinc-300 leading-relaxed font-normal">
+            <p className="text-xs sm:text-base lg:text-lg text-zinc-300 leading-relaxed font-normal">
               Hello 👋🏼, I am a{" "}
               <span className="text-white font-semibold">
                 B.Tech CSE student
@@ -244,7 +246,7 @@ const Page2 = () => {
               at Lakshmi Narain College of Technology, Bhopal, passionate about crafting modern, high-performance web applications.
             </p>
 
-            <p className="text-sm sm:text-base lg:text-lg text-zinc-300 leading-relaxed font-normal">
+            <p className="text-xs sm:text-base lg:text-lg text-zinc-300 leading-relaxed font-normal">
               As a{" "}
               <span className="text-white font-semibold">
                 Backend-Leaned Full Stack Developer
@@ -252,17 +254,17 @@ const Page2 = () => {
               , I transform complex ideas into interactive, scalable, and visually polished digital experiences using React, Next.js, Node.js, Express, and MongoDB.
             </p>
 
-            <p className="text-sm sm:text-base lg:text-lg text-zinc-300 leading-relaxed font-normal">
+            <p className="text-xs sm:text-base lg:text-lg text-zinc-300 leading-relaxed font-normal">
               I consistently explore modern design systems and architectural patterns. I use{" "}
               <span className="text-white font-semibold">Java</span> to solve algorithmic problems, sharpening my understanding of data structures, computational complexity, and clean code principles.
             </p>
 
             {/* Quick highlight tags */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-2">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-2 pt-1 sm:pt-2">
               {["Full-Stack MERN", "Data Structures & Java", "UI/UX & Design Systems"].map((tag) => (
                 <span
                   key={tag}
-                  className="px-3 py-1 rounded-full text-xs font-medium text-emerald-300/90 bg-emerald-950/30 border border-emerald-500/20"
+                  className="px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full text-[11px] sm:text-xs font-medium text-emerald-300/90 bg-emerald-950/30 border border-emerald-500/20"
                 >
                   {tag}
                 </span>
@@ -287,39 +289,48 @@ const Page2 = () => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.5 }}
-        className="relative z-10 max-w-4xl mx-auto text-center mt-24 sm:mt-32 px-4"
+        className="relative z-10 max-w-4xl mx-auto text-center mt-14 sm:mt-24 lg:mt-32 px-4"
       >
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-semibold uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mb-3">
+        <div className="inline-flex items-center gap-1.5 sm:gap-2 px-3 py-1 rounded-full text-[10px] sm:text-xs font-semibold uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 mb-2.5 sm:mb-3">
           <Terminal className="w-3.5 h-3.5" />
           <span>Engineering Philosophy & Workflow</span>
         </div>
         <h2 className="uppercase font-extrabold text-2xl sm:text-4xl lg:text-5xl text-white tracking-tight">
           What I <span className="text-emerald-400">Actually Do</span>
         </h2>
-        <div className="w-20 h-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full mx-auto mt-3.5" />
-        <p className="text-zinc-400 text-sm sm:text-base lg:text-lg mt-4 max-w-2xl mx-auto leading-relaxed">
+        <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full mx-auto mt-2.5 sm:mt-3.5" />
+        <p className="text-zinc-400 text-xs sm:text-base lg:text-lg mt-3 sm:mt-4 max-w-2xl mx-auto leading-relaxed">
           From architectural decisions and robust data models to production deployments — here is how I approach and execute software engineering.
         </p>
       </motion.div>
 
       {/* MOBILE ONLY: Horizontal Touch Swipe Carousel (< md) */}
-      <div className="block md:hidden mt-8 px-4 w-full overflow-hidden">
+      <div className="block md:hidden mt-6 px-4 w-full overflow-hidden">
         <Swiper
-          slidesPerView={1.12}
-          spaceBetween={14}
+          slidesPerView={1.08}
+          spaceBetween={12}
           grabCursor={true}
           allowTouchMove={true}
           watchOverflow={true}
-          className="w-full select-none py-2"
+          onSlideChange={(swiper) => setActivePillar(swiper.activeIndex)}
+          className="w-full select-none py-1"
         >
           {engineeringPillars.map((pillar) => (
-            <SwiperSlide key={`mobile-${pillar.step}`} className="h-auto">
+            <SwiperSlide key={`mobile-${pillar.step}`} className="!h-auto flex">
               <PillarCard pillar={pillar} isMobile={true} />
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className="flex items-center justify-center gap-1.5 mt-3 text-[11px] text-zinc-500 font-mono">
-          <span>← Swipe horizontally to explore →</span>
+        {/* Sleek mobile slide progress indicator dots */}
+        <div className="flex items-center justify-center gap-1.5 mt-3">
+          {engineeringPillars.map((_, i) => (
+            <span
+              key={i}
+              className={`h-1.5 rounded-full transition-all duration-300 ${
+                activePillar === i ? 'w-6 bg-emerald-400' : 'w-1.5 bg-zinc-700'
+              }`}
+            />
+          ))}
         </div>
       </div>
 

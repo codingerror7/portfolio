@@ -72,11 +72,11 @@ const Navbar = () => {
           </nav>
 
           {/* Mobile Actions: Resume + Hamburger Toggle */}
-          <div className="flex md:hidden items-center gap-3">
+          <div className="flex md:hidden items-center gap-2.5">
             <a
               href="/Sujal_resume.pdf"
               download="Sujal_resume.pdf"
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-zinc-950 font-semibold text-xs bg-gradient-to-r from-orange-400 to-amber-400 shadow-[0_0_12px_rgba(251,146,60,0.4)]"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-zinc-950 font-semibold text-xs bg-gradient-to-r from-orange-400 to-amber-400 shadow-[0_0_12px_rgba(251,146,60,0.4)] hover:scale-105 active:scale-95 transition-transform"
             >
               <span>CV</span>
               <FaCloudDownloadAlt className="text-xs" />
@@ -84,7 +84,7 @@ const Navbar = () => {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-zinc-200 hover:text-white rounded-lg bg-white/5 border border-white/10 transition-colors focus:outline-none"
+              className="min-h-[44px] min-w-[44px] flex items-center justify-center p-2.5 text-zinc-200 hover:text-white rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition-colors focus:outline-none focus:ring-2 focus:ring-orange-400/50"
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? <HiX size={22} /> : <HiMenuAlt3 size={22} />}
@@ -94,17 +94,27 @@ const Navbar = () => {
 
         {/* Mobile Dropdown Drawer */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-zinc-950/95 backdrop-blur-xl border-b border-white/10 px-6 py-5 flex flex-col gap-4 text-center animate-in fade-in slide-in-from-top-3 duration-200">
+          <div className="md:hidden bg-zinc-950/98 backdrop-blur-2xl border-b border-white/10 px-5 py-4 flex flex-col gap-1.5 animate-in fade-in slide-in-from-top-3 duration-200 shadow-2xl">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 text-sm font-medium tracking-wider text-zinc-300 hover:text-orange-400 transition-colors"
+                className="flex items-center justify-between py-2.5 px-3.5 rounded-xl text-sm font-semibold tracking-wider text-zinc-300 hover:text-white hover:bg-white/[0.06] transition-colors"
               >
-                {link.name}
+                <span>{link.name}</span>
+                <span className="text-zinc-600 text-xs">→</span>
               </a>
             ))}
+            <a
+              href="/Sujal_resume.pdf"
+              download="Sujal_resume.pdf"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-2 flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-zinc-950 font-bold text-xs uppercase tracking-wider bg-gradient-to-r from-orange-400 via-amber-400 to-yellow-400 shadow-[0_0_16px_rgba(251,146,60,0.35)]"
+            >
+              <span>Download Full Resume</span>
+              <FaCloudDownloadAlt className="text-sm" />
+            </a>
           </div>
         )}
       </header>
