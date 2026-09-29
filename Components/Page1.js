@@ -68,13 +68,13 @@ const Page1 = () => {
             <p className="text-zinc-200 text-base sm:text-xl mt-20 lg:mt-0 lg:text-2xl font-medium tracking-wide">
               Hey, I am
             </p>
-            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold uppercase tracking-tight text-white mt-1.5 sm:mt-2 mb-3 sm:mb-4 leading-tight">
+            <h1 className="text-2xl sm:text-5xl md:text-6xl lg:text-6xl font-extrabold uppercase tracking-tight text-white mt-1.5 sm:mt-2 mb-3 sm:mb-4 leading-tight">
               <span className="block min-h-[1.2em]">
                 <Typewriter
                   words={[
                     "Sujal Saraswat",
                     "Full Stack Dev",
-                    "Web Designer",
+                    "Backend Engineer",
                     "Problem Solver",
                   ]}
                   loop={true}
