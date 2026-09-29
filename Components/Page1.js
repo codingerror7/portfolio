@@ -147,27 +147,6 @@ const Page1 = () => {
           </motion.div>
         </div>
 
-        {/* Focus Tags */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="relative z-20 max-w-5xl mx-auto px-4 mt-8 lg:mt-12 flex flex-wrap justify-center items-center gap-2.5 sm:gap-4"
-        >
-          {[
-            "#PROBLEM SOLVING",
-            "#CRITICAL THINKING",
-            "#SOFTWARE DEVELOPMENT",
-            "#LOGIC BUILDING",
-          ].map((tag) => (
-            <span
-              key={tag}
-              className={`px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold tracking-wider uppercase border backdrop-blur-md transition-all duration-300 hover:scale-105 cursor-default ${getTagColor()}`}
-            >
-              {tag}
-            </span>
-          ))}
-        </motion.div>
 
         {/* Theme Switcher Controls */}
         <div className="absolute bottom-5 right-5 sm:right-8 z-30 flex items-center gap-2.5 px-3 py-2 rounded-full bg-black/50 backdrop-blur-xl border border-white/15 shadow-xl">
