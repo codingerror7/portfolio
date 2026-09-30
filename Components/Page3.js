@@ -48,6 +48,7 @@ import { TbApi } from 'react-icons/tb'
 const skillIcons = {
   // Frontend
   "JavaScript": SiJavascript,
+  "Typescript": SiJavascript,
   "React.js": RiReactjsFill,
   "Next.js": RiNextjsFill,
   "TailwindCSS": SiTailwindcss,
@@ -62,6 +63,7 @@ const skillIcons = {
 
   // Backend
   "MySQL": SiMysql,
+  "PostgreSQL" : SiMongodb,
   "MongoDB": SiMongodb,
   "Express": SiExpress,
   "Node.js": FaNode,
